@@ -1,0 +1,53 @@
+schema:
+  name: PlotMessage
+  namespace: radar
+  version: 1.0
+  description: >
+    Validated radar plot delivered from the detection subsystem
+    to the tracking subsystem.
+
+  cpp:
+    namespace: radar
+    alignment: 64
+
+fields:
+  - name: sequence_number
+    type: uint64
+    units: none
+    description: Monotonically increasing plot sequence number.
+
+  - name: timestamp
+    type: float64
+    units: seconds
+    description: Measurement acquisition time.
+
+  - name: range
+    type: float64
+    units: meters
+    description: Measured slant range.
+
+  - name: range_rate
+    type: float64
+    units: meters_per_second
+    description: Measured radial velocity.
+
+  - name: azimuth
+    type: float64
+    units: radians
+    description: Azimuth angle in the radar body frame.
+
+  - name: elevation
+    type: float64
+    units: radians
+    description: Elevation angle in the radar body frame.
+
+  - name: snr
+    type: float32
+    units: dB
+    description: Signal-to-noise ratio.
+
+  - name: quality
+    type: float32
+    units: normalized
+    valid_range: [0.0, 1.0]
+    description: Plot quality score.

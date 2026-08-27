@@ -3,6 +3,9 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+# Generated files from .yaml
+generated
+
 # C extensions
 *.so
 

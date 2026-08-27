@@ -1,0 +1,57 @@
+schema:
+  name: TrackMessage
+  namespace: radar
+  version: 1.0
+  description: >
+    Radar track state published by the tracking subsystem.
+
+  cpp:
+    namespace: radar
+    alignment: 64
+
+fields:
+  - name: track_id
+    type: uint64
+    units: none
+    description: Unique identifier assigned to the track.
+
+  - name: timestamp
+    type: float64
+    units: seconds
+    description: Time associated with the current track state.
+
+  - name: state
+    type: float64
+    count: 6
+    units: mixed
+    description: >
+      Cartesian state vector [x, y, z, vx, vy, vz].
+
+  - name: covariance
+    type: float64
+    count: 36
+    units: mixed
+    description: >
+      6x6 row-major state covariance matrix.
+
+  - name: quality
+    type: float32
+    units: normalized
+    valid_range: [0.0, 1.0]
+    description: Track quality score.
+
+  - name: hit_count
+    type: uint32
+    units: none
+    description: Number of detections associated with this track.
+
+  - name: miss_count
+    type: uint32
+    units: none
+    description: Number of consecutive missed updates.
+
+  - name: status
+    type: uint8
+    units: none
+    description: >
+      Track status: 0=Tentative, 1=Confirmed, 2=Coasting, 3=Deleted.
