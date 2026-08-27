@@ -2,14 +2,17 @@
 
 ## Decision
 
-The radar software shall separate Detection and Tracking
-into independent logical subsystems.
+TargetModel
+    Owns simulated world truth.
 
-Detection is responsible for identifying candidate radar
-observations and producing standardized Plot data.
+RadarSensor
+    Converts truth + TaskRequest into a simulated measurement.
 
-Tracking is responsible for maintaining persistent estimates of objects using Plot data.
+DetectionManager
+    Converts measurements into plots/detections.
 
-Tracking shall not depend on the internal implementation of the Detection subsystem.
+TrackManager
+    Maintains track state from plots.
 
-The interface between the two subsystems shall be defined using a standardized message contract.
+Scheduler
+    Decides what radar task happens next.
