@@ -1,1 +1,0 @@
-ICDs serve to define the agreement between two or more subsystems.
